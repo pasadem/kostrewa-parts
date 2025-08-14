@@ -1,0 +1,56 @@
+
+
+[
+  {
+    "name": "Гніздо IEC",
+    "categorySlug": "kotly",
+    "categoryName": "Котли",
+    "modelSlug": "Mini Bio",
+    "modelName": "Mini Bio",
+    "powerSlug": "10kW",
+    "powerName": "10 кВт",
+    "versionSlug": "v01",
+    "versionName": "Версія 01",
+    "price": 10,
+    "image": "/images/kotly/Mini Bio/10 Kw/v 01/Гніздо IEC__10zl.jpg"
+  },
+   {
+    "name": "Двигун 5.3 об/хв",
+    "categorySlug": "kotly",
+    "categoryName": "Котли",
+    "modelSlug": "Mini Bio",
+    "modelName": "Mini Bio",
+    "powerSlug": "10kW",
+    "powerName": "10 кВт",
+    "versionSlug": "v01",
+    "versionName": "Версія 01",
+    "price": 375,
+    "image": "/images/kotly/Mini Bio/10 Kw/v 01/Двигун 5,3 об-хв__490.jpg"
+  },
+   {
+    "name": "Завихрювач MB Φ 35 L 530 мм",
+    "categorySlug": "kotly",
+    "categoryName": "Котли",
+    "modelSlug": "Mini Bio",
+    "modelName": "Mini Bio",
+    "powerSlug": "10kW",
+    "powerName": "10 кВт",
+    "versionSlug": "v01",
+    "versionName": "Версія 01",
+    "price": 15,
+    "image": "/images/kotly/Mini Bio/10 Kw/v 01/Завихрювач MB Φ 35 L 530 мм__15.jpg"
+  },
+   {
+    "name": "Завихрювач MB Φ 48 L 530 мм",
+    "categorySlug": "kotly",
+    "categoryName": "Котли",
+    "modelSlug": "Mini Bio",
+    "modelName": "Mini Bio",
+    "powerSlug": "10kW",
+    "powerName": "10 кВт",
+    "versionSlug": "v01",
+    "versionName": "Версія 01",
+    "price": 21,
+    "image": "/images/kotly/Mini Bio/10 Kw/v 01/Завихрювач MB Φ 48 L 530 мм__21.jpg"
+  }
+]
