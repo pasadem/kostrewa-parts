@@ -5,8 +5,8 @@ import Link from 'next/link';
 const PAGE_SIZE = 12;
 
 export default async function CategoryPage(props) {
-  const params = props.params as { slug: string[] };
-  const searchParams = props.searchParams || {};
+  const params = await props.params as { slug: string[] };
+  const searchParams = await props.searchParams || {};
   await dbConnect();
 
   const slugArr = params.slug || [];
