@@ -1,4 +1,4 @@
-import { dbConnect } from '@/lib/models/dbConnect';
+import { dbConnect } from '@/lib/dbConnect';
 import { Product } from '@/lib/models/Product';
 import Link from 'next/link';
 
@@ -123,6 +123,7 @@ export default async function CategoryPage(props) {
       </div>
     </div>
   );
+  }
 
   // Если путь невалидный — пустой div
   return (

@@ -1,5 +1,5 @@
 import { Product } from '@/lib/models/Product';
-import { dbConnect } from '@/lib/models/dbConnect';
+import { dbConnect } from '@/lib/dbConnect';
 import ProductGrid from '@/components/ProductGrid';
 import Header from '@/components/Header';
 
