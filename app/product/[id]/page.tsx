@@ -1,13 +1,9 @@
 import { dbConnect } from '@/lib/dbConnect';
 import { Product } from '@/lib/models/Product';
 
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
 
-export default async function ProductPage({ params }: PageProps) {
+
+export default async function ProductPage({ params }: { params: { id: string } }) {
   await dbConnect();
   const productId = await params.id;
   const product = await Product.findById(productId).lean();
