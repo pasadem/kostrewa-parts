@@ -6,7 +6,7 @@ import { Product } from '@/lib/models/Product';
 export default async function ProductPage({ params }: { params: { id: string } }) {
   await dbConnect();
   const productId = params.id;
-  const product = Product.findById(productId).lean();
+  const product = await Product.findById(productId).lean();
 
   if (!product) return <div className="p-4">Запчастина не знайдена</div>;
 
