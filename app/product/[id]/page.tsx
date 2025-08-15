@@ -1,13 +1,12 @@
 import { dbConnect } from '@/lib/dbConnect';
 import { Product } from '@/lib/models/Product';
-import { use } from "react";
 
-type PageProps = Promise<{ id: string }>;
+interface PageProps { id: string; }
 
 
-export default async function ProductPage( props: {params : PageProps }) {
+export default async function ProductPage(props: { params: PageProps }) {
   await dbConnect();
-  const productParams = await props.params;
+  const productParams = props.params;
   const { id } = productParams;
   const product = await Product.findById(id).lean();
 
