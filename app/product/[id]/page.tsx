@@ -2,15 +2,14 @@ import { dbConnect } from '@/lib/dbConnect';
 import { Product } from '@/lib/models/Product';
 import { use } from "react";
 
-interface PageProps {
-  params: Promise<{ id: string }>;
-}
+type PageProps = Promise<{ id: string }>;
 
-export default function ProductPage({ params }: PageProps) {
-  dbConnect();
-  const productParams = use(params);
+
+export default async function ProductPage( props: {params : PageProps }) {
+  await dbConnect();
+  const productParams = await props.params;
   const { id } = productParams;
-  const product = Product.findById(id).lean();
+  const product = await Product.findById(id).lean();
 
   if (!product) return <div className="p-4">Запчастина не знайдена</div>;
 
