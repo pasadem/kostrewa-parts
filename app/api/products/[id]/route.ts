@@ -3,7 +3,7 @@ import { Product } from '@/lib/models/Product';
 
 export async function GET(request, { params }) {
   await dbConnect();
-  const productId = await params.id;
+  const productId = params.id;
   const product = await Product.findById(productId);
   if (!product) {
     return new Response('Not found', { status: 404 });

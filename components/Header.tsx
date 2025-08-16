@@ -2,8 +2,44 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+interface Product {
+  _id: string;
+  name: string;
+  categorySlug: string;
+  categoryName: string;
+  modelSlug: string;
+  modelName: string;
+  powerSlug: string;
+  powerName: string;
+  versionSlug: string;
+  versionName: string;
+  description: string;
+  price: number;
+  image: string;
+}
+type MenuTree = {
+  [categorySlug: string]: {
+    name: string;
+    models: {
+      [modelSlug: string]: {
+        name: string;
+        powers: {
+          [powerSlug: string]: {
+            name: string;
+            versions: {
+              [versionSlug: string]: {
+                name: string;
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+};
+
 export default function Header() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [openCat, setOpenCat] = useState<string | null>(null);
   const [openModel, setOpenModel] = useState<string | null>(null);
   const [openPower, setOpenPower] = useState<string | null>(null);
@@ -15,7 +51,7 @@ export default function Header() {
   }, []);
 
   // Построение дерева меню с украинскими названиями
-  const menu = {};
+  const menu: MenuTree = {};
   products.forEach(prod => {
     if (!menu[prod.categorySlug]) menu[prod.categorySlug] = { name: prod.categoryName, models: {} };
     if (!menu[prod.categorySlug].models[prod.modelSlug]) menu[prod.categorySlug].models[prod.modelSlug] = { name: prod.modelName, powers: {} };

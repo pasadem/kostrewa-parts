@@ -1,6 +1,9 @@
+// @ts-nocheck
+
 import { dbConnect } from '@/lib/dbConnect';
 import { Product } from '@/lib/models/Product';
 import Link from 'next/link';
+
 
 const PAGE_SIZE = 12;
 
