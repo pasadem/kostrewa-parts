@@ -1,5 +1,5 @@
 // lib/models/Product.js
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, models, Document } from 'mongoose';
 
 interface MyDocument extends Document {
   _id: string;
@@ -25,4 +25,4 @@ const mySchema = new Schema<MyDocument>({
   image: { type: String, required: true },
 });
 
-export const Product = model<MyDocument>('Product', mySchema);
+export const Product = models.Product ||model<MyDocument>('Product', mySchema);
