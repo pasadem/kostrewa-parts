@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
+
+
 if (!MONGODB_URI) {
   throw new Error(
     '❌ Пожалуйста, укажи переменную окружения MONGODB_URI в .env.local'
@@ -21,21 +23,15 @@ if (!cached) {
 }
 
 export async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
+  try {
+    if (mongoose.connection.readyState >= 1) {
+      console.log('MongoDB already connected');
+      return;
+    }
+    await mongoose.connect(MONGODB_URI, { dbName: 'test' });
+    console.log('MongoDB connected');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+    throw error; // чтобы ошибка была видна в терминале и в логах
   }
-
-  if (!cached.promise) {
-    cached.promise = mongoose
-      .connect(MONGODB_URI, {
-        dbName: 'mydb', // 👉 можно заменить на своё имя БД
-        bufferCommands: false,
-      })
-      .then((mongoose) => {
-        return mongoose;
-      });
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
 }

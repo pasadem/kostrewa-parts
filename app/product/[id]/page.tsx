@@ -8,11 +8,14 @@ export interface PageProps {
   }>;
 }
 
+
+
 export default async function ProductPage({ params }: PageProps) {
   await dbConnect();
   const { id } = await params;
 
   const product = await Product.findById(id).lean<ProductType>();
+  console.log
 
   if (!product) {
     return <div className="p-4">Запчастина не знайдена</div>;
