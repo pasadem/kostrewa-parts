@@ -1,18 +1,41 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://pdemianski75:FgdFGwi6kIo2ZWKf@cluster0.si05xlv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+
+const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
-  throw new Error('Будь ласка, встанови MONGODB_URI у .env.local');
+  throw new Error(
+    '❌ Пожалуйста, укажи переменную окружения MONGODB_URI в .env.local'
+  );
+}
+
+/**
+ * Чтобы Mongoose не создавал новое соединение на каждый запрос
+ * используем глобальный кеш (важно для Next.js hot reload)
+ */
+let cached = (global as any).mongoose;
+
+if (!cached) {
+  cached = (global as any).mongoose = { conn: null, promise: null };
 }
 
 export async function dbConnect() {
-  if (mongoose.connection.readyState >= 1) return;
+  if (cached.conn) {
+    return cached.conn;
+  }
 
-  return mongoose.connect(MONGODB_URI);
-}
-export async function dbDisconnect() {
-  if (mongoose.connection.readyState === 0) return;
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(MONGODB_URI, {
+        dbName: 'mydb', // 👉 можно заменить на своё имя БД
+        bufferCommands: false,
+      })
+      .then((mongoose) => {
+        return mongoose;
+      });
+  }
 
-  return mongoose.disconnect();
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
