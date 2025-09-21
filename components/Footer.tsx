@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col items-center gap-2">
         <div>
           <span className="font-semibold">Телефон: </span>
-          <a href="tel:+38 050 130 5398" className="hover:underline">+38 050 130 5398</a>
+          <a href="tel:+38 050 540 8897" className="hover:underline">+38 050 540 8897</a>
         </div>
         <div>
           <span className="font-semibold">Пошта: </span>
